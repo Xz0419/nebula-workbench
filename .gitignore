@@ -23,9 +23,9 @@ yarn-error.log*
 pnpm-debug.log*
 
 # local runtime data and secrets
-data/
-logs/
-out/
+/data/
+/logs/
+/out/
 *.zip
 *.db
 *.db-wal
