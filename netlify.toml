@@ -1,0 +1,19 @@
+# Netlify 部署配置
+# 也可以不在仓库里放这个文件，Netlify 会自动识别 Vite —— 但显式写出来更可控。
+
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# 注意：这里故意不写 /* -> /index.html 的 SPA 回退。
+# 项目用的是 hash 路由（#/console），路径永远停在 / 上，服务端只会被请求 index.html，
+# 不存在「刷新 404」的问题。加了兜底反而会把 404 的资源请求也伪装成 200，掩盖真实问题。
+
+# 带 hash 的构建产物可以长期强缓存
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

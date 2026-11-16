@@ -1,0 +1,8 @@
+# pnpm 11 起，构建脚本白名单改为 allowBuilds（映射），
+# 且配置只从这里读取 —— package.json 里的 "pnpm" 字段已被废弃。
+#
+# esbuild 需要在安装期执行构建脚本（校验 / 补下平台二进制）。
+# 当前 node_modules 里 esbuild.exe 已存在，所以不放行也能跑，
+# 但 pnpm 会以退出码 1 结束，进而让 `pnpm dev` 的预检查直接失败。
+allowBuilds:
+  esbuild: true

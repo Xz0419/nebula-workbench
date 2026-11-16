@@ -1,0 +1,147 @@
+/* ============================================================
+   交互式趋势图
+   ============================================================ */
+.chart {
+  padding: 14px 0 6px;
+}
+
+.chart--empty {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.6rem;
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.76rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.chart__legend-item:hover {
+  border-color: var(--stroke-strong);
+}
+
+.chart__legend-item.is-off {
+  opacity: 0.42;
+}
+
+.chart__swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.chart__stage {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  cursor: crosshair;
+}
+
+.chart__stage:focus-visible {
+  outline: 2px solid var(--a2);
+  outline-offset: 4px;
+}
+
+.chart__stage svg {
+  display: block;
+}
+
+.chart__rows line {
+  stroke: rgba(255, 255, 255, 0.07);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+
+html[data-theme='light'] .chart__rows line {
+  stroke: rgba(16, 20, 40, 0.1);
+}
+
+.chart__cursor {
+  stroke: rgba(255, 255, 255, 0.28);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+html[data-theme='light'] .chart__cursor {
+  stroke: rgba(16, 20, 40, 0.28);
+}
+
+.chart__tip {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  gap: 3px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--stroke-strong);
+  background: var(--panel-solid);
+  box-shadow: var(--shadow);
+  font-size: 0.74rem;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.chart__tip-time {
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.chart__tip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text);
+}
+
+.chart__tip-row i {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+}
+
+.chart__tip-row b {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.chart__axis {
+  position: relative;
+  height: 18px;
+  margin-top: 4px;
+}
+
+.chart__axis span {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 700px) {
+  .chart__axis span {
+    font-size: 0.62rem;
+  }
+}

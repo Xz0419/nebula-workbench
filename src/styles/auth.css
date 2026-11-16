@@ -1,0 +1,224 @@
+/* ============================================================
+   认证 / 设置 / 404 共用版式
+   ============================================================ */
+.auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.auth__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.auth__card {
+  width: 100%;
+  max-width: 440px;
+  padding: clamp(26px, 4vw, 38px);
+  border-radius: 24px;
+  border: 1px solid var(--stroke);
+  background: var(--panel);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.auth__card--wide {
+  max-width: 640px;
+}
+
+.auth__card h1 {
+  margin-top: 10px;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.auth__lead {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.auth__form {
+  display: grid;
+  gap: 6px;
+  margin-top: 24px;
+}
+
+.auth__form label {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.auth__form input {
+  width: 100%;
+  padding: 0.7em 0.9em;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 0.94rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+html[data-theme='light'] .auth__form input {
+  background: #fff;
+}
+
+.auth__form input:focus {
+  outline: none;
+  border-color: rgba(124, 92, 255, 0.65);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme='light'] .auth__form input:focus {
+  background: #fff;
+}
+
+.auth__submit {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.auth__submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
+}
+
+.auth__error {
+  margin-top: 14px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 107, 214, 0.35);
+  background: rgba(255, 107, 214, 0.1);
+  color: #ff9ade;
+  font-size: 0.82rem;
+}
+
+.auth__hint {
+  margin-top: 18px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.auth__alt {
+  margin-top: 14px;
+  font-size: 0.82rem;
+}
+
+.auth__alt a {
+  color: var(--a2);
+}
+
+.auth__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* 未登录跳转 / 加载占位 */
+.gate {
+  display: grid;
+  place-items: center;
+  gap: 14px;
+  min-height: 46vh;
+  padding: 60px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.gate__spinner {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--stroke-strong);
+  border-top-color: var(--a1);
+  animation: spin 0.9s linear infinite;
+}
+
+/* ============================================================
+   设置页
+   ============================================================ */
+.settings__list {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.settings__list > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.settings__list dt {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.settings__list dd {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  word-break: break-all;
+  text-align: right;
+}
+
+.settings__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.settings__row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.settings__row strong {
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.settings__row p {
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.settings__row--danger strong {
+  color: #ff9ade;
+}
+
+/* 页脚里的纯文本占位项 */
+.footer__muted {
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.4;
+}
+
+@media (max-width: 620px) {
+  .settings__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
